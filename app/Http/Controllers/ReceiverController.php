@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ReceiverController extends Controller
 {
-
-
     private static $temp_table;
 
     public static function set_message_data($request) {
@@ -48,26 +46,21 @@ class ReceiverController extends Controller
     public static function check_user_exist() {
 
         $chat_id_collection = Encuesta::get_all_chat_id();
-        $chat_id_exists = check_chat_id_exists(session('chat_id'), $chat_id_collection); //Aqui se utiliza el helpr 
+         //Aqui se utiliza el helpr 
+        $chat_id_exists = check_chat_id_exists(session('chat_id'), $chat_id_collection);
         $chat_id_exists == 0 ? Responses::start() : Responses::usuario_existente();
     
     }
-
     public static function call_first_datos_informativos($id_campo_dato) {
 
         $datos_informativos = Encuesta::get_campo_datos_informativos($id_campo_dato);
         session()->put('contador', $datos_informativos->id);
         $texto = 'Por favor, seleccione su ' . $datos_informativos->nombre_campo ;
         
-
-        MensajeController::cargar_datos_informativos($texto, $datos_informativos->id, $datos_informativos->campo_slug);
-        
-
-/*         self::$temp_table = 'table_' . session('chat_id');
-        $sqlite_data = new Sqlite();
-        $sqlite_data->up_usuarios_data_table(self::$temp_table);
-        Sqlite::set_usuario_info('chat_id', session('chat_id'), self::$temp_table);
- */
+        MensajeController::cargar_datos_informativos(
+            $texto, 
+            $datos_informativos->id, 
+            $datos_informativos->campo_slug);
 
         MensajeController::borrar_teclado();
         
