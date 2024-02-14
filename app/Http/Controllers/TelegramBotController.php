@@ -31,7 +31,8 @@ class TelegramBotController extends Controller
     
     public function webhook(Request $request)
     {
-        //Storage::put('question_1', json_encode(session()->get()));
+/*         Storage::put('question_1', json_encode($request));
+        return; */
         /** Bloque para extraer los datos del update */
         if (isset($request->message)) {
             

@@ -36,16 +36,16 @@ use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\TelegramBotController;         
 use App\Http\Controllers\TesterController;         
 
-
+/* Route::post('/webhook', function () {
+	    $updates = Telegram::getWebhookUpdate();
+		Storage::put('comiinnngggg.txt', $updates);
+		return 'ok';
+	}); */
 Route::post('/webhook', [TelegramController::class, 'webhook'])->name('webhook');
 
 Route::get('/tester', [TesterController::class, 'tester'])->name('tester');
 
-/* Route::post('/webhook', function () {
-    $updates = Telegram::getWebhookUpdate();
-	Storage::put('comiinnngggg.txt', $updates);
-    return 'ok';
-}); */
+
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');

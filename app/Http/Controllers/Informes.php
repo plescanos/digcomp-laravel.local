@@ -72,4 +72,6 @@ class Informes extends Controller
 
         return $org_data;
     }
+
+    
 }
