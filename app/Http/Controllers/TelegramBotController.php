@@ -35,7 +35,7 @@ class TelegramBotController extends Controller
     {
 
         //$respuestas = Encuesta::get_puntaje_respuestas($request->input('message.from.id'));
-        //session()->put('chat_id', $request->input('message.from.id'));
+        session()->put('chat_id', $request->input('message.from.id'));
         //Responses::calcular_dsi_por_competencia(session('chat_id'));
         //Storage::put('question_1', json_encode($respuestas));
         //Storage::put('question_1', json_encode(session('chat_id')));
