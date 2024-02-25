@@ -34,7 +34,6 @@ class ReceiverController extends Controller
         parent::$texto = ($request->input('message.text') != null) ? $request->input('message.text') : 'Sin mensaje';
 
         
-
     }
     
     public static function set_callback_query_data($request) {
