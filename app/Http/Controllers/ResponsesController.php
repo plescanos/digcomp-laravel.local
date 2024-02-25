@@ -124,7 +124,7 @@ class ResponsesController extends Controller
             $respuestas[$key]['competencia_name_' . $competencia->id] = $competencia->competencia;
             
         }
-        Storage::append('question_1', json_encode($respuestas));
+        //Storage::append('question_1', json_encode($respuestas));
 
         foreach ($respuestas as $key => $respuesta) {
             

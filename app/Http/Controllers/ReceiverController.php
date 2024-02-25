@@ -37,7 +37,7 @@ class ReceiverController extends Controller
     }
     
     public static function set_callback_query_data($request) {
-        Storage::put('question_3', json_encode($request->input()));
+        //Storage::put('question_3', json_encode($request->input()));
 
         session()->put('chat_id', strval($request->input('callback_query.from.id')));
         parent::$chat_id = strval($request->input('callback_query.from.id'));
@@ -154,7 +154,7 @@ class ReceiverController extends Controller
         $user_id = Encuesta::get_user_id(session('chat_id'))[0]->id;
         //$respuesta_cache = self::set_cache_valor(explode(',', parent::$callback)[2]);
         //Storage::put('question_1', explode(',', parent::$callback)[1]);//Test line
-        Storage::append('question_1', json_encode($user_id));//Test line
+        //Storage::append('question_1', json_encode($user_id));//Test line
         //Storage::append('question_1', json_encode(parent::$callback));//Test line
         
         if (isset($pregunta->id)) {
