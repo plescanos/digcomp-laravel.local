@@ -43,7 +43,7 @@ class TelegramBotController extends Controller
         /** Bloque para extraer los datos del update */
         if (isset($request->message)) {
             
-            $this->datos_update = Receiver::set_message_data($request);
+            Receiver::set_message_data($request);
             
             if ($request->input('message.text') == '/start') {
                 Receiver::check_user_exist();
@@ -51,7 +51,7 @@ class TelegramBotController extends Controller
 
         }else if(isset($request->callback_query)){
             
-            $this->datos_update = Receiver::set_callback_query_data($request); 
+            Receiver::set_callback_query_data($request); 
             
             CallbackController::check_callback();
 
