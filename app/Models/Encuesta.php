@@ -13,7 +13,7 @@ class Encuesta extends Model
 
     public static function set_init_case($data) {
         DB::table('usuarios')->insert([
-            'chat_id' => session('chat_id'),
+            'chat_id' => $data['chat_id'],
             'chat_first_name' => $data['chat_first_name'],
             'chat_last_name' => $data['chat_last_name'],
             'chat_username' => (isset($data['chat_username']) ? $data['chat_username'] : $data['chat_first_name']),

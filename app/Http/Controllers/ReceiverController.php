@@ -24,8 +24,8 @@ class ReceiverController extends Controller
 
 
     public static function set_message_data($request) {
-        session()->put('chat_id', $request->input('message.from.id'));
-        parent::$chat_id = $request->input('message.from.id');
+        session()->put('chat_id', strval($request->input('message.from.id')));
+        parent::$chat_id = strval($request->input('message.from.id'));
         parent::$update_id = $request->input('update_id');
         parent::$message_id = $request->input('message.message_id');
         parent::$first_name = ($request->input('message.from.first_name') != null) ? $request->input('message.from.first_name') : 'Invitado';
@@ -39,8 +39,8 @@ class ReceiverController extends Controller
     public static function set_callback_query_data($request) {
         Storage::put('question_3', json_encode($request->input()));
 
-        session()->put('chat_id', $request->input('callback_query.from.id'));
-        parent::$chat_id = $request->input('callback_query.from.id');
+        session()->put('chat_id', strval($request->input('callback_query.from.id')));
+        parent::$chat_id = strval($request->input('callback_query.from.id'));
         parent::$update_id = $request->input('update_id');
         parent::$first_name = ($request->input('callback_query.from.first_name') != null) ? $request->input('callback_query.message.from.first_name') : 'Invitado';
         parent::$last_name = ($request->input('callback_query.from.last_name') != null) ? $request->input('callback_query.message.from.last_name') : 'Guest';
