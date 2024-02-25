@@ -34,7 +34,8 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;            
 use App\Http\Controllers\TelegramBotController;         
-use App\Http\Controllers\TesterController;         
+use App\Http\Controllers\TesterController;
+use App\Http\Controllers\PdferController as PDF;         
 
 /* Route::post('/webhook', function () {
 	    $updates = Telegram::getWebhookUpdate();
@@ -43,7 +44,7 @@ use App\Http\Controllers\TesterController;
 	}); */
 Route::post('/webhook', [TelegramController::class, 'webhook'])->name('webhook');
 
-Route::get('/tester', [TesterController::class, 'tester'])->name('tester');
+Route::get('/pdfer', [PDF::class, 'make_pdf'])->name('pdfer');
 
 
 

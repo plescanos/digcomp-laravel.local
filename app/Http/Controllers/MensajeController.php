@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Telegram\Bot\Keyboard\InlineKeyboardMarkup;
 use Telegram\Bot\Keyboard\InlineKeyboardButton;
 
+use App\Http\Controllers\ResponsesController as Responder;
 use App\Models\Encuesta;
 
 class MensajeController extends Controller
@@ -57,6 +58,32 @@ class MensajeController extends Controller
 
     }
 
+    public static function send_dsi($dsi) {
+
+        $mensaje = 'Su DSI global es ' . $dsi;
+
+        Telegram::sendMessage([
+            
+            'chat_id' => session('chat_id'),
+            'text' => $mensaje,
+            
+
+        ]);
+    }
+
+
+    public static function send_dsi_by_competencia($dsi, $competencia_name) {
+
+        $mensaje = 'Su DSI de la competencia: **' .  $competencia_name . '** es: ' . $dsi;
+
+        Telegram::sendMessage([
+            
+            'chat_id' => session('chat_id'),
+            'text' => $mensaje,
+            
+
+        ]);
+    }
     
     public static function send_mensaje_usuario_existente() {
         $response = Telegram::sendMessage([
@@ -105,15 +132,18 @@ class MensajeController extends Controller
             'text' => "Gracias por tu interés.",
             
         ]);
+
+        Responder::deleteChat(session('chat_id'));
     }
 
-    public static function cargar_datos_informativos($texto, $contador = 0, $tbl_slug) {
+    public static function cargar_datos_informativos($texto, $tbl_slug, $contador = 0) {
         $instituciones = Encuesta::get_instituciones($tbl_slug);
 
 
         foreach ($instituciones as $key => $value) {
             $keyboard[] = array(['text' => $value->nombre_telegram, 'callback_data' => 'next,' . $contador . ',' . $value->id]);
         }
+        //$keyboard[] = array(['text' => 'Abortar', 'callback_data' => 'abort']);
 
 
         $inlineKeyboard = ([
@@ -145,6 +175,7 @@ class MensajeController extends Controller
         foreach ($respuestas as $key => $value) {
             $keyboard[] = array(['text' => $value->respuesta, 'callback_data' => 'question_f,' . $contador_pregunta . ',' . $value->id]);
         }
+        //$keyboard[] = array(['text' => 'ABORTAR CUESTIONARIO', 'callback_data' => 'abort']);
         
         
         $inlineKeyboard = ([

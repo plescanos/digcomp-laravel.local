@@ -11,17 +11,17 @@ class SqliteModel extends Model
 {
     use HasFactory;
 
-    
+    //public static $connection;
 
-    public function __construct() {
+/*     public function __construct() {
         
         DB::connection('sqlite_temp')->getPdo()->exec('ATTACH DATABASE ":memory:" AS user_db');
     }
+ */
+    protected static function up_usuarios_data_table() {
 
-    public function up_usuarios_data_table($table) {
-
-        DB::connection('sqlite_temp')
-        ->statement('CREATE TABLE user_db.' . $table . '
+/*         self::$connection
+        ->statement('CREATE TABLE user_db.' . 1 . '
          (  
             id INTEGER PRIMARY KEY, 
             chat_id TEXT NULL,
@@ -34,7 +34,7 @@ class SqliteModel extends Model
             id_educacion INT NULL
         )');
 
-
+            return; */
     }
 
     public function down_sqlite() {
@@ -43,20 +43,20 @@ class SqliteModel extends Model
         //$connection->disconnect();
     }
 
-    public static function set_usuario_info($campo, $valor, $table) {
+/*     public static function set_usuario_info($campo, $valor, $table) {
         DB::connection('sqlite_temp')
         ->table('user_db.' . $table)
         ->insert([
             $campo => $valor,
                 ]);
-    }
+    } */
 
-    public static function get_chat_id($table) {
+/*     public static function get_chat_id($table) {
         return DB::connection('sqlite_temp')
         ->table('user_db.' . $table)
         ->select('chat_id')
         ->first();
     }
-
+ */
 
 }

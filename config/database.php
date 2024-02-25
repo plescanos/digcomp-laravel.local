@@ -35,11 +35,6 @@ return [
 
     'connections' => [
 
-        'sqlite_temp' => [
-            'driver' => 'sqlite',
-            'database' => ':memory:',
-            'prefix' => '',
-        ],
 
         'sqlite' => [
             'driver' => 'sqlite',
