@@ -24870,3 +24870,7 @@ pre[class*=language-] {
     overflow: auto !important;
   }
 }
+
+.qr-telegram {
+	height: 150px;
+}

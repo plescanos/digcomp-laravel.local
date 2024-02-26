@@ -52,6 +52,10 @@ Route::get('/admin', [Admin::class, 'build_admin_gui'])->name('admin')->middlewa
 
 Route::post('/push-institucion', [InstitucionController::class, 'set_new_institucion'])->name('set_inst')->middleware('auth');
 
+Route::get('/digcomp_bot', function () {
+	return redirect()->away('https://t.me/digcomp_bot');
+})->name('bot');
+
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');

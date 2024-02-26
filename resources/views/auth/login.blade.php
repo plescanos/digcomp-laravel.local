@@ -14,9 +14,14 @@
             <div class="page-header min-vh-100">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
-                            <div class="card card-plain">
-                                <div class="card-header pb-0 text-start">
+                        <div class="col-xl-6 col-lg-6 col-md-6 d-flex flex-column mx-lg-0 mx-auto mt-6">
+                            <div class="row card card-plain">
+                                <div class="col-12 card-header pb-0 text-start">
+                                    <h4 class="font-weight-bolder">Auto Evaluación con Telegram</h4>
+                                    <p class="mb-0">Descubra su Nivel de Competencia Digital en 10 minutos. Use nuestra evaluación de Telegram</p>
+                                    <a href="/digcomp_bot"><img src="{{ asset('./img/qr_telegram.png') }}" alt="qr-telegram" class="qr-telegram"></a>
+                                </div>
+                                <div class="col-12 card-header pb-0 text-start">
                                     <h4 class="font-weight-bolder">Acceso</h4>
                                     <p class="mb-0">Ingrese su correo electrónico y contraseña para acceder.</p>
                                 </div>
