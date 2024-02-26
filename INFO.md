@@ -34,11 +34,16 @@ Todoas las sibrerías se instalarán y actualizarán a través del comando 'comp
 Instrumento de Evaluación a través de Bot de Telegram:
 https://youtu.be/WSVqEAevATQ
 
+Proceso de administración y carga de datos (brochure)
+https://youtu.be/X9-20MP6jQM
+
+
 ## Accesos
 
 ### Instrumento de Evaluación a través de Telegram Bot
 
 [t.me/digcomp_bot](t.me/digcomp_bot)
+
 
 ### Portal web de visualización de los datos recogidos
 
@@ -52,4 +57,4 @@ password: secret
 https://github.com/plescanos/digcomp-laravel.local.git
 
 ### Rama de producción
-La rama de despliegue es branch/maind
+La rama de despliegue es branch/mainf
