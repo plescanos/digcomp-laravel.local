@@ -1,6 +1,8 @@
 ## DigComp Evaluator 1.0
 
-Es una aplicación basada en Laravel cuya función consiste en permitir la recolección, análisis y visualización de las competencias digitales de los empleados de las empresas ecuatorianas
+Es una aplicación basada en Laravel cuya función consiste en permitir la recolección, análisis y visualización de las competencias digitales de los empleados de las empresas ecuatorianas, como parte del proyecto Puzzle de Trabajo de Titulación "Proceso de carga, análisis y visualización de datos de las competencias digitales de los trabajadores 
+de las empresas ecuatorianas"
+
 
 ## Requisitos
 
@@ -58,3 +60,6 @@ https://github.com/plescanos/digcomp-laravel.local.git
 
 ### Rama de producción
 La rama de despliegue es branch/mainf
+
+## Desarrollador
+Pablo Lescano Silva
