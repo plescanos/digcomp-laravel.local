@@ -46,6 +46,8 @@ Route::post('/webhook', [TelegramController::class, 'webhook'])->name('webhook')
 
 Route::get('/pdfer', [PDF::class, 'make_pdf'])->name('pdfer');
 
+Route::post('/select', [HomeController::class, 'select'])->name('select')->middleware('auth');
+
 
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');

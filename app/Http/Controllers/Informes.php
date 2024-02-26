@@ -16,6 +16,7 @@ class Informes extends Controller
         $org_data['universo'] = $bulk_data->universo;
         $org_data['nombre_organizacion'] = $bulk_data->nombre_institucion;
         
+        
         /** Recupera la muestra del universo de la irganizacion */
         $org_data['muestra'] =  $data->get_muestra($org_id);
 
@@ -23,12 +24,17 @@ class Informes extends Controller
         $respuestas = $data->get_respuestas();
         $competencias = $data->get_competencias();
 
+        
         foreach ($competencias as $key => $value) {
+            
+            $respuestas_totales_por_institucion = $data->get_respuestas_objetivas_por_institucion($org_id, $value->id);
+            
             foreach ($respuestas as $key_2 => $value_2) {
                 
                 $org_data['main_chart_dataset']['n' . $value_2->id . '_c' . $value->id] = 
-                $data->get_count_nivel_competencia($value_2->id, $org_id, $value->id) /
-                $data->get_count_preguntas_competencia($value->id);
+                $data->get_count_nivel_competencia($value_2->id, $org_id, $value->id) *100 /
+                $respuestas_totales_por_institucion;
+                //$data->get_count_preguntas_competencia($value->id);
 
             }
         }

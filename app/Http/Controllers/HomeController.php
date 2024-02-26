@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Informes as InformesController;
+use App\Models\Institucion;
 
 use Illuminate\Http\Request;
 
@@ -23,11 +24,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index($id = 1)
     {
         
-
-        $org_data = InformesController::build_org_data(1);
+        $instituciones = Institucion::all();
+        $org_data = InformesController::build_org_data($id);
         
     
         return view('pages.dashboard', [
@@ -38,7 +39,30 @@ class HomeController extends Controller
             'main_chart_dataset' => json_encode( $org_data['main_chart_dataset'] ),
             'genero' => $org_data['genero'],
             'edad' => $org_data['edad'],
-            'educacion' => $org_data['educacion']
+            'educacion' => $org_data['educacion'],
+            'instituciones' => $instituciones
         ]);
+    }
+
+    public function select($id)
+    {
+        
+
+        
+/*         $instituciones = Institucion::all();
+        $org_data = InformesController::build_org_data($id); */
+        
+        return route('dashboard', [$_POST['id'] => $id]);
+/*         return view('pages.dashboard', [
+            'universo' => $org_data['universo'],
+            'nombre_organizacion' => $org_data['nombre_organizacion'],
+            'muestra' => $org_data['muestra'],
+            'porcentaje_muestra' => round(($org_data['muestra'] * 100) / $org_data['universo'], 2),
+            'main_chart_dataset' => json_encode( $org_data['main_chart_dataset'] ),
+            'genero' => $org_data['genero'],
+            'edad' => $org_data['edad'],
+            'educacion' => $org_data['educacion'],
+            'instituciones' => $instituciones 
+        ]); */
     }
 }

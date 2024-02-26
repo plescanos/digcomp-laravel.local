@@ -36,6 +36,18 @@ class Informes extends Model
         ->count();
     }
 
+    public function get_respuestas_objetivas_por_institucion($org_id, $competencia_id) {
+        return DB::table('usuario_pregunta_respuesta')
+        ->join('usuarios', 'usuarios.id', '=', 'usuario_pregunta_respuesta.id_usuario')
+        ->join('preguntas', 'preguntas.id', '=', 'usuario_pregunta_respuesta.id_pregunta')
+        ->join('competencias_tbl', 'competencias_tbl.id', '=', 'preguntas.competencia')
+        ->where('competencias_tbl.id', $competencia_id)
+        ->where('preguntas.active_question', 1)
+        ->where('preguntas.tipo_pregunta', 1)
+        ->where('usuarios.id_institucion', $org_id)
+        ->count();
+    }
+
     public function get_respuestas() {
         return DB::table('respuestas')
         ->select('id', 'respuesta', 'nivel_slug')

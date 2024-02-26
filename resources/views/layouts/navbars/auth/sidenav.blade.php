@@ -21,6 +21,9 @@
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
             </li>
+            <div>
+                
+            </div>
             <li class="nav-item">
                 <div
                 class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -30,6 +33,7 @@
                 
             </li>
 
+
             <li class="nav-item">
                 <a class="nav-link {{ str_contains(request()->url(), 'user-management') == true ? 'active' : '' }}" href="{{ route('pdfer') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -38,6 +42,13 @@
                     <span class="nav-link-text ms-1">Exportar PDF</span>
                 </a>
             </li>
+
+            <ul class="list-group">
+                
+                @foreach ($instituciones as $dataset)
+                    <li class="nav-item mt-3 d-flex align-items-center"><a href="{{ route('select', ['id' => $dataset->id]) }}">{{ $dataset->nombre_institucion }}</a></li>
+                @endforeach
+            </ul>
 {{--             <li class="nav-item mt-3 d-flex align-items-center">
                 <div class="ps-4">
                     <i class="fab fa-laravel" style="color: #f4645f;"></i>

@@ -1,3 +1,6 @@
+@php
+    //dd(json_decode($main_chart_dataset)->n1_c1)
+@endphp
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
@@ -590,7 +593,7 @@
                 labels: ["N1", "N2", "N3", "N4", "N1", "N2", "N3", "N4", "N1", "N2", "N3", "N4"],
                 datasets: [{
 
-                    label: "Competencias Digitales",
+                    label: "Competencia Digital (%)",
                     tension: 0.4,
                     borderWidth: 0,
                     pointRadius: 0,
@@ -602,21 +605,22 @@
                     fill: true,
 
                     data: [
-                        main_chart_dataset.n1_c1, 
-                        main_chart_dataset.n2_c1,
-                        main_chart_dataset.n3_c1,
-                        main_chart_dataset.n4_c1,
-                        main_chart_dataset.n1_c2, 
-                        main_chart_dataset.n2_c2,
-                        main_chart_dataset.n3_c2,
-                        main_chart_dataset.n4_c2,
-                        main_chart_dataset.n1_c3, 
-                        main_chart_dataset.n2_c3,
-                        main_chart_dataset.n3_c3,
-                        main_chart_dataset.n4_c3],
-                    maxBarThickness: 9
+                        main_chart_dataset.n1_c1.toFixed(2), 
+                        main_chart_dataset.n2_c1.toFixed(2),
+                        main_chart_dataset.n3_c1.toFixed(2),
+                        main_chart_dataset.n4_c1.toFixed(2),
+                        main_chart_dataset.n1_c2.toFixed(2), 
+                        main_chart_dataset.n2_c2.toFixed(2),
+                        main_chart_dataset.n3_c2.toFixed(2),
+                        main_chart_dataset.n4_c2.toFixed(2),
+                        main_chart_dataset.n1_c3.toFixed(2), 
+                        main_chart_dataset.n2_c3.toFixed(2),
+                        main_chart_dataset.n3_c3.toFixed(2),
+                        main_chart_dataset.n4_c3.toFixed(2)],
+                    maxBarThickness: 30
 
                 }],
+                
             },
             options: {
                 responsive: true,
@@ -624,6 +628,8 @@
                 plugins: {
                     legend: {
                         display: false,
+                        position: 'bottom',
+
                     }
                 },
                 interaction: {
@@ -633,7 +639,7 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: parseInt(muestra),
+                        max: parseInt(100),
 
                         grid: {
                             drawBorder: false,
@@ -643,7 +649,7 @@
                             borderDash: [5, 5]
                         },
                         ticks: {
-                            stepSize: 50,
+                            stepSize: 25,
                             display: true,
                             padding: 10,
                             color: '#000000',
