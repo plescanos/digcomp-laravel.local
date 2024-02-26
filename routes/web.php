@@ -35,7 +35,9 @@ use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;            
 use App\Http\Controllers\TelegramBotController;         
 use App\Http\Controllers\TesterController;
-use App\Http\Controllers\PdferController as PDF;         
+use App\Http\Controllers\PdferController as PDF; 
+use App\Http\Controllers\adminController as Admin;   
+use App\Http\Controllers\InstitucionController;     
 
 /* Route::post('/webhook', function () {
 	    $updates = Telegram::getWebhookUpdate();
@@ -46,8 +48,9 @@ Route::post('/webhook', [TelegramController::class, 'webhook'])->name('webhook')
 
 Route::get('/pdfer', [PDF::class, 'make_pdf'])->name('pdfer');
 
-Route::post('/select', [HomeController::class, 'select'])->name('select')->middleware('auth');
+Route::get('/admin', [Admin::class, 'build_admin_gui'])->name('admin')->middleware('auth');
 
+Route::post('/push-institucion', [InstitucionController::class, 'set_new_institucion'])->name('set_inst')->middleware('auth');
 
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');

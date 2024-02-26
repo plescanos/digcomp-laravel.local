@@ -30,10 +30,15 @@ class Informes extends Controller
             $respuestas_totales_por_institucion = $data->get_respuestas_objetivas_por_institucion($org_id, $value->id);
             
             foreach ($respuestas as $key_2 => $value_2) {
-                
-                $org_data['main_chart_dataset']['n' . $value_2->id . '_c' . $value->id] = 
-                $data->get_count_nivel_competencia($value_2->id, $org_id, $value->id) *100 /
-                $respuestas_totales_por_institucion;
+                if ($respuestas_totales_por_institucion == 0) {
+                    $org_data['main_chart_dataset']['n' . $value_2->id . '_c' . $value->id] = 
+                    $data->get_count_nivel_competencia($value_2->id, $org_id, $value->id) *100 /
+                    1;
+                }else {
+                    $org_data['main_chart_dataset']['n' . $value_2->id . '_c' . $value->id] = 
+                    $data->get_count_nivel_competencia($value_2->id, $org_id, $value->id) *100 /
+                    $respuestas_totales_por_institucion;
+                }
                 //$data->get_count_preguntas_competencia($value->id);
 
             }

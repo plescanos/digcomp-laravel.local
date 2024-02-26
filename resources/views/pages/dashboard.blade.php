@@ -1,6 +1,8 @@
 @php
     //dd(json_decode($main_chart_dataset)->n1_c1)
+
 @endphp
+
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')

@@ -39,7 +39,7 @@
                     <span class="mask bg-primary opacity-6"></span>
                 </div>
             @endif
-            @include('layouts.navbars.auth.sidenav')
+            @include('layouts.navbars.auth.sidenav_admin')
             <main class="main-content border-radius-lg">
                 @yield('content')
             </main>
@@ -48,7 +48,7 @@
     @endauth
 
     <!--   Core JS Files   -->
-    <script src="assets/js/core/popper.min.js"></script>
+<!--     <script src="assets/js/core/popper.min.js"></script>
     <script src="assets/js/core/bootstrap.min.js"></script>
     <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
@@ -60,7 +60,7 @@
             }
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
-    </script>
+    </script> -->
     <!-- Github buttons -->
     
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->

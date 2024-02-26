@@ -24,45 +24,43 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index($id = 1)
+    public function index()
     {
-        
+       
+        if ($_GET == null || empty($_GET)) {
+            $_GET['id'] = 1;
+        }
+
         $instituciones = Institucion::all();
-        $org_data = InformesController::build_org_data($id);
+        $org_data = InformesController::build_org_data($_GET['id']);
         
     
-        return view('pages.dashboard', [
-            'universo' => $org_data['universo'],
-            'nombre_organizacion' => $org_data['nombre_organizacion'],
-            'muestra' => $org_data['muestra'],
-            'porcentaje_muestra' => round(($org_data['muestra'] * 100) / $org_data['universo'], 2),
-            'main_chart_dataset' => json_encode( $org_data['main_chart_dataset'] ),
-            'genero' => $org_data['genero'],
-            'edad' => $org_data['edad'],
-            'educacion' => $org_data['educacion'],
-            'instituciones' => $instituciones
-        ]);
+        if ($org_data['universo'] > 0) {
+            return view('pages.dashboard', [
+                'universo' => $org_data['universo'],
+                'nombre_organizacion' => $org_data['nombre_organizacion'],
+                'muestra' => $org_data['muestra'],       
+                'porcentaje_muestra' => round(($org_data['muestra'] * 100) / $org_data['universo'], 2),
+                'main_chart_dataset' => json_encode( $org_data['main_chart_dataset'] ),
+                'genero' => $org_data['genero'],
+                'edad' => $org_data['edad'],
+                'educacion' => $org_data['educacion'],
+                'instituciones' => $instituciones
+            ]);
+        }elseif ($org_data['universo'] == 0) {
+            return view('pages.dashboard', [
+                'universo' => $org_data['universo'],
+                'nombre_organizacion' => $org_data['nombre_organizacion'],
+                'muestra' => $org_data['muestra'],       
+                'porcentaje_muestra' => round(($org_data['muestra'] * 100) / 1, 2),
+                'main_chart_dataset' => json_encode( $org_data['main_chart_dataset'] ),
+                'genero' => $org_data['genero'],
+                'edad' => $org_data['edad'],
+                'educacion' => $org_data['educacion'],
+                'instituciones' => $instituciones
+            ]);
+        }
     }
 
-    public function select($id)
-    {
-        
 
-        
-/*         $instituciones = Institucion::all();
-        $org_data = InformesController::build_org_data($id); */
-        
-        return route('dashboard', [$_POST['id'] => $id]);
-/*         return view('pages.dashboard', [
-            'universo' => $org_data['universo'],
-            'nombre_organizacion' => $org_data['nombre_organizacion'],
-            'muestra' => $org_data['muestra'],
-            'porcentaje_muestra' => round(($org_data['muestra'] * 100) / $org_data['universo'], 2),
-            'main_chart_dataset' => json_encode( $org_data['main_chart_dataset'] ),
-            'genero' => $org_data['genero'],
-            'edad' => $org_data['edad'],
-            'educacion' => $org_data['educacion'],
-            'instituciones' => $instituciones 
-        ]); */
-    }
 }
