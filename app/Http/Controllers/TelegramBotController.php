@@ -34,11 +34,13 @@ class TelegramBotController extends Controller
     public function webhook(Request $request)
     {
 
+
+        //Storage::put('question_1', json_encode($request->message));
+        //return;
         //$respuestas = Encuesta::get_puntaje_respuestas($request->input('message.from.id'));
         session()->put('chat_id', strval($request->input('message.from.id')));
         //Responses::calcular_dsi_por_competencia(session('chat_id'));
         //Storage::put('question_1', json_encode($respuestas));
-        //Storage::put('question_1', json_encode(session('chat_id')));
         //return;
         /** Bloque para extraer los datos del update */
         if (isset($request->message)) {
