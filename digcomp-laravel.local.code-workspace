@@ -8,6 +8,32 @@
 		"yaml.schemas": {
 			"file:///Users/mymac/.vscode/extensions/atlassian.atlascode-3.0.5/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
 			"https://json.schemastore.org/codeship-services.json": "file:///Users/mymac/Documents/Untitled-1.txt"
-		}
+		},
+		"favorites.resources": [
+			{
+				"filePath": "app/Http/Controllers/ResponsesController.php",
+				"group": "Default"
+			},
+			{
+				"filePath": "app/Http/Controllers/DSIController.php",
+				"group": "Default"
+			},
+			{
+				"filePath": "app/Http/Controllers/TelegramBotController.php",
+				"group": "Default"
+			},
+			{
+				"filePath": "routes/web.php",
+				"group": "Default"
+			},
+			{
+				"filePath": "app/Http/Controllers/HomeController.php",
+				"group": "Default"
+			},
+			{
+				"filePath": "resources/views/pages/dashboard.blade.php",
+				"group": "Default"
+			}
+		]
 	}
 }
